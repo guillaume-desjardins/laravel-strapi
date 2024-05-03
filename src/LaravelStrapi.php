@@ -28,11 +28,11 @@ class LaravelStrapi
     private $token;
     private array $headers = [];
 
-    public function __construct()
+    public function __construct($token = null)
     {
         $this->strapiUrl = config('strapi.url');
         $this->cacheTime = config('strapi.cacheTime');
-        $this->token = config('strapi.token');
+        $this->token = $token ?? config('strapi.token');
 
         if (!empty($this->token)) {
             $this->headers['Authorization'] = 'Bearer ' . $this->token;
